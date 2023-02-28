@@ -1,0 +1,76 @@
+---
+title: "Practice RMarkdown"
+author: "mutter"
+date: "2023-02-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+```
+
+## Introduction
+
+This data was downloaded from [this link](https://arcticdata.io/catalog/view/doi:10.18739/A25T3FZ8X)
+
+### Read Data
+
+```{r}
+BGchem2008data <- read_csv("data/BGchem2008data.csv")
+BGchem2008data <-read_csv("data/BGchem2008data.csv")
+BGchem2008data <-read_csv("data/BGchem2008data.csv")
+str(BGchem2008data)
+head.matrix(BGchem2008data)
+
+```
+```{r exploration, echo=FALSE, eval=FALSE}
+colnames(BGchem2008data)
+
+```
+
+## Analysis
+```{r}
+nitrite <-mean(BGchem2008data$NO2)
+nitrate <-mean(BGchem2008data$NO3)
+amm <- mean(BGchem2008data$NH4)
+phos <- mean(BGchem2008data$P)
+```
+
+### Calculate summary statistics
+### Calcualte mean Redfield ration
+```{r}
+ratio <-(nitrate + nitrate + amm)/phos
+```
+The Redfield ratio in this data set approximately 'r
+round(ratio)
+### Plot Redfield ratio
+
+
+```{r plot echo=FALSE, eval=FALSE}
+plot(BGchem2008data$P, BGchem2008data$NO3, BGchem2008data$NH4)
+```
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
